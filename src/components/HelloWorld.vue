@@ -1,21 +1,30 @@
 <template>
   <div class="hello">
-    <p ref="p">My name is {{ name }}</p>
-    <button @click="click">Click me</button>
+    <h1>Array</h1>
+    <input type="text" v-model="search" />
+    <p>search term - {{ search }}</p>
+    <div v-for="name in searchName" :key="name">
+      <p>{{ name }}</p>
+    </div>
+    <!-- <h1>Filtered Array</h1>
+    <div v-for="name in filteredNames" :key="name">
+      <p>{{ name }}</p>
+    </div> -->
   </div>
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { ref, computed } from "@vue/reactivity";
 export default {
   name: "HelloWorld",
   setup() {
-    let name = ref("Paul");
-    const p = ref(null);
-    const click = () => {
-      name.value = "dsdasdssss";
-    };
-    return { name, p, click };
+    const names = ref(["paul", "john", "doe", "peter"]);
+
+    const search = ref("");
+    const searchName = computed(() => {
+      return names.value.filter((name) => name.includes(search.value));
+    });
+    return { names, search, searchName };
   },
 };
 </script>
