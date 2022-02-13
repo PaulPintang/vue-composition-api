@@ -1,18 +1,22 @@
 <template>
   <div class="hello">
-    <p>My name is {{ name }}</p>
+    <p ref="p">My name is {{ name }}</p>
+    <button @click="click">Click me</button>
   </div>
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
 export default {
   name: "HelloWorld",
   setup() {
     console.log("setup function!!");
     let name = "Paul";
-    // let age = 21;
-
-    return { name: name };
+    const p = ref(null);
+    const click = () => {
+      console.log(p.value);
+    };
+    return { name, p, click };
   },
 };
 </script>
