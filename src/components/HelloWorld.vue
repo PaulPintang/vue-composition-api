@@ -10,11 +10,10 @@ import { ref } from "@vue/reactivity";
 export default {
   name: "HelloWorld",
   setup() {
-    console.log("setup function!!");
-    let name = "Paul";
+    let name = ref("Paul");
     const p = ref(null);
     const click = () => {
-      console.log(p.value);
+      name.value = "dsdasdssss";
     };
     return { name, p, click };
   },
