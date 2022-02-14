@@ -1,14 +1,17 @@
 <template>
-  <HelloWorld />
+  <!-- <HelloWorld /> -->
+  <FetchData />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
+import FetchData from "./components/FetchData.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    // HelloWorld,
+    FetchData,
   },
 };
 </script>
