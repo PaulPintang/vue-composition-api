@@ -1,12 +1,14 @@
 <template>
   <div>
-    <Props name="Paul" />
+    <div v-if="show">
+      <Props />
+    </div>
+    <button @click="Click">Unmount Component</button>
   </div>
 </template>
 
 <script>
-import { onMounted, onUnmounted, onUpdated } from "@vue/runtime-core";
-// import { methods } from "vue";
+import { onMounted, onUnmounted, ref } from "@vue/runtime-core";
 import Props from "./Props.vue";
 export default {
   name: "FetchData",
@@ -14,7 +16,13 @@ export default {
   setup() {
     onMounted(() => console.log("component mounted"));
     onUnmounted(() => console.log("component unmounted"));
-    onUpdated(() => console.log("component updated"));
+    // run when any data in this component updated
+    // onUpdated(() => console.log("component updated"));
+    const show = ref(true);
+    const Click = () => {
+      show.value = !show.value;
+    };
+    return { Click, show };
   },
 };
 </script>
